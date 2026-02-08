@@ -1,9 +1,9 @@
-# 📝 Comment Category Prediction  
+# Comment Category Prediction  
 ### Text, Engagement & Metadata-based Classification
 
 ---
 
-## 📌 Problem Overview
+## Problem Overview
 Online platforms receive millions of user-generated comments that must be accurately categorized for moderation and internal processing.
 
 The objective of this project is to **predict the final category assigned to a comment** using:
@@ -15,7 +15,7 @@ This is a **multi-class classification problem** with **four target categories**
 
 ---
 
-## 📊 Dataset Summary
+## Dataset Summary
 | Split | Records |
 |------|--------|
 | Training | ~198,000 |
@@ -32,7 +32,7 @@ This is a **multi-class classification problem** with **four target categories**
 
 ---
 
-## 🧹 Data Preparation & Feature Engineering
+## Data Preparation & Feature Engineering
 Key preprocessing and feature engineering steps:
 
 - Handled missing and invalid values using robust imputation strategies  
@@ -52,7 +52,7 @@ All preprocessing was implemented using **scikit-learn Pipelines** and `ColumnTr
 
 ---
 
-## 🤖 Modeling Strategy
+## Modeling Strategy
 - Formulated as a **multi-class classification** task  
 - Built an end-to-end ML pipeline combining:
   - TF-IDF text features
@@ -63,7 +63,7 @@ All preprocessing was implemented using **scikit-learn Pipelines** and `ColumnTr
 
 ---
 
-## 📈 Model Evaluation
+## Model Evaluation
 Evaluation metrics used:
 - **Accuracy**
 - **Macro F1-score** (to ensure balanced performance across all classes)
@@ -72,19 +72,16 @@ The model achieved **strong macro F1 performance** on the validation set, indica
 
 ---
 
-## 🧠 Key Insights
+## Key Insights
 - Combining **textual features with engagement signals** significantly improves prediction quality  
 - Feature engineering on time-based and vote-based attributes adds meaningful predictive power  
 - ML pipelines help maintain clean, scalable, and production-ready workflows  
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Language:** Python  
 - **Libraries:** Pandas, NumPy, scikit-learn  
 - **Text Processing:** TF-IDF  
 - **Environment:** Jupyter Notebook  
 
----
-
-## 📁 Repository Structure
