@@ -1,110 +1,90 @@
-# Comment-Category-Prediction-using-Text-Engagement-Metadata-Features
-Comment Category Prediction using Text, Engagement & Metadata
-Problem Statement
+# 📝 Comment Category Prediction  
+### Text, Engagement & Metadata-based Classification
 
-Online platforms receive a large volume of user-generated comments that must be categorized correctly for moderation and internal handling.
-The goal of this project is to predict the final category assigned to a comment using a combination of:
+---
 
-textual content,
+## 📌 Problem Overview
+Online platforms receive millions of user-generated comments that must be accurately categorized for moderation and internal processing.
 
-user engagement signals,
+The objective of this project is to **predict the final category assigned to a comment** using:
+- textual content,
+- user engagement signals (upvotes/downvotes),
+- and system-generated metadata.
 
-and system-generated metadata.
+This is a **multi-class classification problem** with **four target categories**.
 
-This is a multi-class classification problem with four possible output categories.
+---
 
-Dataset Overview
+## 📊 Dataset Summary
+| Split | Records |
+|------|--------|
+| Training | ~198,000 |
+| Test | ~102,000 |
 
-Training data: ~198,000 comments
+**Target Variable:** `label` (4 classes)
 
-Test data: ~102,000 comments
+### Feature Groups
+- **Textual:** Comment text  
+- **Engagement:** Upvotes, downvotes  
+- **Metadata:** Emoticon indicators, internal system flags  
+- **Temporal:** Comment creation timestamp  
+- **Topic Indicators:** Race, religion, gender, disability references  
 
-Target variable: label (4 classes)
+---
 
-Key Features
+## 🧹 Data Preparation & Feature Engineering
+Key preprocessing and feature engineering steps:
 
-Textual: raw comment text
+- Handled missing and invalid values using robust imputation strategies  
+- Extracted **temporal features**:
+  - Hour of day
+  - Day of week
+  - Month
+  - Weekend indicator  
+- Created **engagement-based features**:
+  - Score = upvotes − downvotes  
+  - Total votes  
+  - Upvote ratio  
+- Converted text into numerical features using **TF-IDF vectorization**  
+- Encoded categorical features using **One-Hot Encoding**
 
-Engagement: upvotes, downvotes
+All preprocessing was implemented using **scikit-learn Pipelines** and `ColumnTransformer` for reproducibility.
 
-Metadata: emoticon indicators, internal system flags
+---
 
-Temporal: comment creation time
+## 🤖 Modeling Strategy
+- Formulated as a **multi-class classification** task  
+- Built an end-to-end ML pipeline combining:
+  - TF-IDF text features
+  - Numerical features
+  - Categorical features  
+- Trained a **Logistic Regression** classifier as a strong baseline  
+- Used a **stratified train–validation split** to handle class imbalance  
 
-Topic indicators: race, religion, gender, disability references
+---
 
-Data Preprocessing & Feature Engineering
+## 📈 Model Evaluation
+Evaluation metrics used:
+- **Accuracy**
+- **Macro F1-score** (to ensure balanced performance across all classes)
 
-The following steps were applied to prepare the data for modeling:
+The model achieved **strong macro F1 performance** on the validation set, indicating reliable classification across categories.
 
-Handled missing and invalid values using appropriate imputation strategies
+---
 
-Converted timestamps into useful temporal features:
+## 🧠 Key Insights
+- Combining **textual features with engagement signals** significantly improves prediction quality  
+- Feature engineering on time-based and vote-based attributes adds meaningful predictive power  
+- ML pipelines help maintain clean, scalable, and production-ready workflows  
 
-hour of day
+---
 
-day of week
+## 🛠️ Tech Stack
+- **Language:** Python  
+- **Libraries:** Pandas, NumPy, scikit-learn  
+- **Text Processing:** TF-IDF  
+- **Environment:** Jupyter Notebook  
 
-month
+---
 
-weekend indicator
-
-Engineered engagement-based features:
-
-score (upvotes − downvotes)
-
-total votes
-
-upvote ratio
-
-Processed text data using TF-IDF vectorization
-
-Encoded categorical variables using One-Hot Encoding
-
-All preprocessing steps were implemented using scikit-learn pipelines to ensure reproducibility.
-
-Modeling Approach
-
-Framed the task as a multi-class classification problem
-
-Built a unified pipeline using ColumnTransformer to handle:
-
-text features
-
-numerical features
-
-categorical features
-
-Trained a Logistic Regression classifier as a strong baseline model
-
-Used stratified train–validation split to handle class imbalance
-
-Evaluation
-
-Evaluation metrics:
-
-Accuracy
-
-Macro F1-score (to account for class imbalance)
-
-The model achieved strong macro F1 performance on the validation set, demonstrating balanced prediction quality across all categories.
-
-Key Learnings
-
-Combining textual data with structured engagement signals significantly improves classification performance
-
-Feature engineering on time and vote-related attributes adds meaningful predictive power
-
-End-to-end ML pipelines help maintain clean, scalable, and production-ready workflows
-
-Tech Stack
-
-Python
-
-Pandas, NumPy
-
-scikit-learn
-
-TF-IDF Vectorization
-
-Jupyter Notebook
+## 📁 Repository Structure
